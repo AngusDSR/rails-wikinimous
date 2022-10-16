@@ -8,11 +8,38 @@
 
 require 'faker'
 
-100.times do
+19.times do
+  puts '...'
   Article.new(
-    title: Faker::Quote.famous_last_words,
-    author: Faker::FunnyName.two_word_name,
-    content: Faker::Lorem.paragraph(sentence_count: 14),
-    views: rand(1..1111)
+    title: Faker::Company.catch_phrase,
+    content:
+    "#{Faker::Lorem.sentences(number: 4).join('')}
+
+    ## #{Faker::Company.buzzword} #{Faker::Company.industry}
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+
+    **#{Faker::Lorem.word}** #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+
+    ## #{Faker::Company.catch_phrase}
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')} [link]
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+
+    #{Faker::Lorem.paragraphs(number: 3).join(' ')}
+    "
+    # summary: Faker::Lorem.sentences(number: 4).join(''),
+    # first_section_title: "#{Faker::Company.buzzword} #{Faker::Company.industry}",
+    # first_section_content: Faker::Lorem.paragraphs(number: 3).join(' '),
+    # second_section_title: Faker::Company.catch_phrase,
+    # second_section_content: Faker::Lorem.paragraphs(number: 4).join(' ')
   ).save
+  puts 'Article added'
 end
+puts '19 Articles added'
+puts "\"#{Article.first.title}\" ... \"#{Article.last.title}\""

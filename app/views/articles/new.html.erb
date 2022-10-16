@@ -1,0 +1,5 @@
+<%= simple_form_for @article do |f| %>
+  <%= f.input :title, label: 'Title', error: 'Please enter a title for the article' %>
+  <%= f.input :content, hint: 'Lots o text plz' %>
+  <%= f.button :submit %>
+<% end %>
